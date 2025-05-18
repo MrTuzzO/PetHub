@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -29,20 +28,22 @@ const Header = () => {
 
   const commonNavItems = [
     { path: '/', label: 'Home', icon: <Home className="h-5 w-5" /> },
-    { path: '/pets', label: 'Adopt', icon: <Heart className="h-5 w-5" /> },
     { path: '/store', label: 'Shop', icon: <ShoppingCart className="h-5 w-5" /> },
     { path: '/treatments', label: 'Treatments', icon: <Stethoscope className="h-5 w-5" /> },
+    { path: '/pets', label: 'Adopt', icon: <Heart className="h-5 w-5" /> },
     { path: '/contact', label: 'Contact', icon: <Phone className="h-5 w-5" /> },
   ];
 
   const authenticatedNavItems = [
-    { path: '/add-pet', label: 'List Pet', icon: <PlusCircle className="h-5 w-5" /> },
     { path: '/my-adoptions', label: 'Dashboard', icon: <UserCircle className="h-5 w-5" /> },
     { path: '/appointments', label: 'Appointments', icon: <CalendarDays className="h-5 w-5" /> },
+    { path: '/add-pet', label: 'List Pet', icon: <PlusCircle className="h-5 w-5" /> },
   ];
 
-  const navItems = currentUser ? [...commonNavItems, ...authenticatedNavItems] : commonNavItems;
-
+  // const navItems = currentUser ? [...commonNavItems, ...authenticatedNavItems] : commonNavItems;
+  // Only commonNavItems in main nav
+  const navItems = commonNavItems;
+  
   const toggleMobileMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const handleLogout = () => {
@@ -125,6 +126,13 @@ const Header = () => {
                 <DropdownMenuItem onClick={() => navigate('/profile')}>
                   <UserCircle className="mr-2 h-4 w-4" /> Profile
                 </DropdownMenuItem>
+                {authenticatedNavItems.map((item) => (
+                  <DropdownMenuItem key={item.path} onClick={() => navigate(item.path)}>
+                    {item.icon}
+                    <span className="ml-2">{item.label}</span>
+                  </DropdownMenuItem>
+                ))}
+                <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleLogout}>
                   <LogOut className="mr-2 h-4 w-4" /> Log out
                 </DropdownMenuItem>
@@ -164,9 +172,27 @@ const Header = () => {
               <DropdownMenuSeparator />
               {currentUser ? (
                 <>
-                  <MobileNavLink to="/profile" icon={<UserCircle className="h-5 w-5" />} label="Profile" onClick={() => setIsMenuOpen(false)} />
-                  <Button variant="ghost" onClick={handleLogout} className="w-full justify-start px-3 py-2 text-base">
-                     <LogOut className="mr-2 h-5 w-5" /> Log out
+                  <MobileNavLink
+                    to="/profile"
+                    icon={<UserCircle className="h-5 w-5" />}
+                    label="Profile"
+                    onClick={() => setIsMenuOpen(false)}
+                  />
+                  {authenticatedNavItems.map((item) => (
+                    <MobileNavLink
+                      key={item.path}
+                      to={item.path}
+                      icon={item.icon}
+                      label={item.label}
+                      onClick={() => setIsMenuOpen(false)}
+                    />
+                  ))}
+                  <Button
+                    variant="ghost"
+                    onClick={handleLogout}
+                    className="w-full justify-start px-3 py-2 text-base"
+                  >
+                    <LogOut className="mr-2 h-5 w-5" /> Log out
                   </Button>
                 </>
               ) : (

@@ -14,8 +14,8 @@ const sliderItemsData = [
     link: "/store",
     buttonText: "Explore Store",
     icon: ShoppingCart,
-    imageLight: "https://images.unsplash.com/photo-1524591325999-f21f2a39801a?auto=format&fit=crop&w=1200&q=80",
-    imageDark: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1200&q=80",
+    imageLight: "https://images.unsplash.com/photo-1596267323386-64074f8883bb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageDark: "https://images.unsplash.com/photo-1596267323386-64074f8883bb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     textColor: "text-white",
     buttonVariant: "secondary",
   },
@@ -26,8 +26,8 @@ const sliderItemsData = [
     link: "/treatments",
     buttonText: "Book Appointment",
     icon: Stethoscope,
-    imageLight: "https://images.unsplash.com/photo-1542868726-0f009bc91a12?auto=format&fit=crop&w=1200&q=80",
-    imageDark: "https://images.unsplash.com/photo-1605280263927-024292674566?auto=format&fit=crop&w=1200&q=80",
+    imageLight: "https://images.unsplash.com/photo-1596267323386-64074f8883bb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageDark: "https://images.unsplash.com/photo-1596267323386-64074f8883bb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     textColor: "text-white",
     buttonVariant: "secondary",
   },
@@ -38,8 +38,8 @@ const sliderItemsData = [
     link: "/pets",
     buttonText: "Meet Pets",
     icon: Heart,
-    imageLight: "https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=1200&q=80",
-    imageDark: "https://images.unsplash.com/photo-1598875184988-5e67b1a8cc9f?auto=format&fit=crop&w=1200&q=80",
+    imageLight: "https://images.unsplash.com/photo-1596267323386-64074f8883bb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageDark: "https://images.unsplash.com/photo-1596267323386-64074f8883bb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     textColor: "text-white",
     buttonVariant: "secondary",
   },
@@ -61,7 +61,7 @@ const HeroSlider = () => {
   const currentImage = theme === 'light' ? imageLight : imageDark;
 
   return (
-    <section className="relative h-[calc(80vh)] min-h-[500px] md:h-[calc(100vh-4rem)] overflow-hidden">
+    <section className="relative h-[calc(80vh)] min-h-[500px] md:h-[calc(80vh-4rem)] overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -76,7 +76,7 @@ const HeroSlider = () => {
             src={currentImage}
             alt={title}
             className="absolute inset-0 w-full h-full object-cover"
-           src="https://images.unsplash.com/photo-1700052079026-353000d7a150" />
+           img="https://images.unsplash.com/photo-1700052079026-353000d7a150" />
           
           <div className={`container mx-auto px-4 h-full flex flex-col justify-end items-start pb-20 md:pb-32 relative z-20 ${textColor}`}>
             <motion.div 
